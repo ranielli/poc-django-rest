@@ -51,5 +51,5 @@ manage.py
 
 # example database
 drf_example
-
+*.sqlite3
 api/db.sqlite3
