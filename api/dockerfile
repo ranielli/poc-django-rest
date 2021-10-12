@@ -6,12 +6,12 @@ USER django
 
 ENV PYTHONUNBUFFERED 1
 
-WORKDIR /home/django/app/
+WORKDIR /home/django/api
 
-ENV PATH $PATH:/home/django/.local/bin
+ENV PATH $PATH:/home/django/api/.local/bin
 
-COPY requirements.txt /home/django/app/
+COPY requirements.txt /home/django/api
 
 RUN pip install -r requirements.txt
 
-COPY . /home/django/app
+COPY . /home/django/app/api
