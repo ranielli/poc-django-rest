@@ -1,6 +1,7 @@
 import csv
 from django.core.management.base import BaseCommand
 from customers.models import Customer
+from customers.utils  import geocode_google_maps
 
 class Command(BaseCommand):
     help = "Loads Customers from CSV file."
@@ -22,13 +23,18 @@ class Command(BaseCommand):
                     last_name=row[2],
                     email=row[3],
                     gender=row[4],
-                    company=[4],
-                    city=row[5],
-                    title=row[6]
+                    company=[5],
+                    city=row[6],
+                    title=row[7]
                 )
+                if customer.city:
+                    longitude,latitude = geocode_google_maps(customer.city)
+                    print(f'{longitude} | {latitude}')
+                    customer.longitude = longitude
+                    customer.latitude = latitude
                 customers.append(customer)
-            if customers:
-                Customer.objects.bulk_create(customers)
+            # if customers:
+            #     Customer.objects.bulk_create(customers)
         self.stdout.write(
             self.style.SUCCESS(
                 f"Finished"

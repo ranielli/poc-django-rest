@@ -1,22 +1,13 @@
-import requests
+import googlemaps
+from datetime import datetime
 
-GOOGLE_MAPS_API_URL = 'http://maps.googleapis.com/maps/api/geocode/json'
-
-params = {
-    'sensor': 'false',
-    'region': 'india'
-}
-
-# Do the request and get the response data
-req = requests.get(GOOGLE_MAPS_API_URL, params={'sensor': 'false'})
-res = req.json()
-
-# Use the first result
-result = res['results'][0]
-
-geodata = dict()
-geodata['lat'] = result['geometry']['location']['lat']
-geodata['lng'] = result['geometry']['location']['lng']
-geodata['address'] = result['formatted_address']
-
-print('{address}. (lat, lng) = ({lat}, {lng})'.format(**geodata))
+def geocode_google_maps(adrress):
+   gmaps = googlemaps.Client(key='AIzaSyBU60ndoNlQ-mGWFRk2pdJZoBPTYSMkNbU')
+   geocode_result = gmaps.geocode(adrress)
+   if len(geocode_result) > 0:
+      longitude = geocode_result[0]['geometry']['location']['lng']
+      latitude =  geocode_result[0]['geometry']['location']['lat']
+   else:
+      longitude = 0
+      latitude = 0
+   return longitude , latitude

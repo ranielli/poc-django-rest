@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.fields import CharField, EmailField
+from .utils import geocode_google_maps
 
 # Create your models here.
 class Customer(models.Model):
@@ -24,4 +25,10 @@ class Customer(models.Model):
     
     def __str__(self):
         return self.first_name
-    
+
+    def save(self, *args, **kwargs):
+        if self.city:
+            longitude, latitude = geocode_google_maps(self.city)
+            self.longitude = longitude
+            self.latitude =  latitude
+        super().save(*args, **kwargs)
