@@ -8,7 +8,6 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /home/django/api
 
-ENV PATH $PATH:/home/django/api/.local/bin
 
 COPY requirements.txt /home/django/api
 
@@ -16,4 +15,4 @@ RUN pip install --upgrade pip
 
 RUN pip install -r requirements.txt
 
-COPY . /home/django/app/api
+COPY . /home/django/api
