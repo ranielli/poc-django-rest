@@ -1,4 +1,5 @@
 # Customer API test 
+##  obs: to present the data we used the django rest template.
 
 ## Features
 * Import csv file via django command
