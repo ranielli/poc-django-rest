@@ -9,10 +9,9 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /home/django/api
 
 
-COPY requirements.txt /home/django/api
-
+COPY requirements.txt .
 RUN pip install --upgrade pip
 
 RUN pip install -r requirements.txt
 
-COPY . /home/django/api
+COPY . .
