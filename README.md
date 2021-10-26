@@ -1,5 +1,13 @@
-# Customer API test 
+# Proof of concept for testing the django rest Framework.
+## Goal:
+* Create a DJANGO REST API, which can read a file with customer data via command and can enter the data into the database, and obtain the location of longitude and latitude.
+
+
+
+## Customer API test 
+
 ##  obs: to present the data we used the django rest template.
+##  
 
 ## Features
 * Import csv file via django command
@@ -11,7 +19,7 @@
 * django rest framework
 * django
 * docker
-* geocode google
+* geocode google(is necessare generate key geocode)
 * sqlite
 
  ### Prerequisites
@@ -23,7 +31,7 @@ Before starting, you will need to have the following tools installed on your mac
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/ranielli/challenge-drf.git
+$ git clone https://github.com/ranielli/poc-django-rest.git
 
 # Access the project folder in terminal/cmd
 $ cd challeng-drf
